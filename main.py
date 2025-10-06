@@ -147,4 +147,4 @@ async def announce():
         await update(client)
         await sendLog(client,"announced!")
 
-client.run(os.getenv("DISCORD_TOKEN"))
+client.run("MTM3MDUxNjQ4MTQxODIwMzEzNg.G_ZWAe.u4uyPtj8ZrdNF0Vf8qgu7NSidlxpUBuLOh_7n0")
