@@ -30,7 +30,7 @@ async def on_ready():
     fl_handler.setLevel(logging.WARNING)
     dc_handler.setFormatter(logging.Formatter(format))
     fl_handler.setFormatter(logging.Formatter(format))
-    logger.addHandler(dc_handler)
+    #logger.addHandler(dc_handler)
     logger.addHandler(fl_handler)
     # アクティビティを設定 
     new_activity = f"課題" 
