@@ -14,7 +14,7 @@ from sync_calender import sync as update
 intents = discord.Intents.default() 
 client = discord.Client(intents=intents) 
 tree = app_commands.CommandTree(client)
-channelID = 1280499920230678538
+channelID = 1362811275259941004
 channelLogID = 1371002002602983455
 
 detabase.init_db()
@@ -133,9 +133,10 @@ async def announce():
         if rows:
             result = "期限間近:\n"
             result += "\n".join(f"{row[0]} ({row[1]}/{row[2]},{row[3]}:{row[4]})" for row in rows)
+            channel = client.get_channel(channelID)
         else:
             result = "一致するレコードはありませんでした。"
-        channel = client.get_channel(channelID)
+            channel = client.get_channel(channelLogID)
         await channel.send(result)
         cur2.execute("""DELETE FROM task WHERE (CAST(month AS INTEGER) = ? AND CAST(day AS INTEGER) = ?)
                     OR (CAST(month AS INTEGER) = ? AND CAST(day AS INTEGER) = ? AND CAST(hour AS INTEGER) BETWEEN 0 AND 17)
