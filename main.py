@@ -1,4 +1,4 @@
-import os
+import config
 import discord
 from discord import app_commands
 from discord.ext import tasks
@@ -14,8 +14,10 @@ from sync_calender import sync as update
 intents = discord.Intents.default() 
 client = discord.Client(intents=intents) 
 tree = app_commands.CommandTree(client)
-channelID = 1362811275259941004
-channelLogID = 1371002002602983455
+channelID = int(config.channelID)
+channelLogID = int(config.channelLogID)
+api = int(config.api)
+calendar = int(config.calendar)
 
 detabase.init_db()
 
@@ -110,7 +112,7 @@ async def delete(interaction: discord.Interaction, 課題: str):
 
 @tree.command(name='calendar', description='googleカレンダーのurlを送信')
 async def calendar(interaction: discord.Interaction):
-    await interaction.response.send_message("https://calendar.google.com/calendar/u/0/embed?src=e96b3471a18e7559f5c62878fe790ad9ce4746e46c130212a2e3614e607791d3@group.calendar.google.com&ctz=Asia/Tokyo",ephemeral=True)
+    await interaction.response.send_message(calendar,ephemeral=True)
 
 @tasks.loop(seconds=60)
 async def announce():
@@ -148,4 +150,4 @@ async def announce():
         await update(client)
         await sendLog(client,"announced!")
 
-client.run("MTM3MDUxNjQ4MTQxODIwMzEzNg.G_ZWAe.u4uyPtj8ZrdNF0Vf8qgu7NSidlxpUBuLOh_7n0")
+client.run(api)

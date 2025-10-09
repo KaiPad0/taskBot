@@ -2,3 +2,4 @@ TASK.db
 .DS_Store
 taskBot.log
 **/__pycache__/**
+.env
