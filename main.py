@@ -16,8 +16,8 @@ client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
 channelID = int(config.channelID)
 channelLogID = int(config.channelLogID)
-api = int(config.api)
-calendar = int(config.calendar)
+api = config.api
+calendar = config.calendar
 
 detabase.init_db()
 
