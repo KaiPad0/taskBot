@@ -179,7 +179,7 @@ async def tell(interaction: discord.Interaction, 教科:str, 期限日:str, 時�
         await sendLog(client,"added!")
         result = "期限間近:\n"
         result += (f"{教科} ({期限日},{時間})")
-        channel = client.get_channel(channelLogID)
+        channel = client.get_channel(channelID)
         await channel.send(result)
         await update(client)
         await sendLog(client,"announced!")
