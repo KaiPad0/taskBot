@@ -150,4 +150,38 @@ async def announce():
         await update(client)
         await sendLog(client,"announced!")
 
+@tree.command(name='tell', description='臨時送信コマンド（忘れた時用）')
+@discord.app_commands.choices(
+    教科 = variable.subject
+)
+@discord.app_commands.describe(
+    期限日="1/31 形式で入力してください",
+    時間="23:59 形式で入力してください"
+)
+async def tell(interaction: discord.Interaction, 教科:str, 期限日:str, 時間:str ="23:59"):
+    if '/' not in 期限日:
+        await interaction.response.send_message("日付は'/'で区切ってください",ephemeral=True)
+        await sendLog(client,"日付入力間違い")
+        
+    elif ':' not in 時間:
+        await interaction.response.send_message("時間は':'で区切ってください",ephemeral=True)
+        await sendLog(client,"時間入力間違い")
+    else:
+        date = 期限日.split('/')
+        time = 時間.split(':')
+        detabase.add(教科,date,time,)
+        await sendLog(client,f'{教科}({期限日},{時間}まで)')
+        try:
+            await interaction.response.send_message(f'{教科}({期限日},{時間}まで)')
+        except discord.errors.NotFound:
+            await sendLog(client,"インタラクションが無効のためメッセージ送信に失敗しました。")
+        await update(client)
+        await sendLog(client,"added!")
+        result = "期限間近:\n"
+        result += (f"{教科} ({期限日},{時間})")
+        channel = client.get_channel(channelLogID)
+        await channel.send(result)
+        await update(client)
+        await sendLog(client,"announced!")
+
 client.run(api)
