@@ -183,5 +183,15 @@ async def tell(interaction: discord.Interaction, 教科:str, 期限日:str, 時�
         await channel.send(result)
         await update(client)
         await sendLog(client,"announced!")
+    
+@tasks.loop(seconds=60)
+async def sutikeisanhou():
+    now = datetime.now()
+    if now.hour == 13 and now.minute == 00 and now.weekday == 4:
+        result = "数値計算法の出席出してね〜"
+        channel = client.get_channel(channelID)
+        await channel.send(result)
+        await update(client)
+        await sendLog(client,"announced!")
 
 client.run(api)
