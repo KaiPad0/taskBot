@@ -1,6 +1,6 @@
 import discord
 subject =[
-    discord.app_commands.Choice(name='信号処理', value='信号処理'),
-    discord.app_commands.Choice(name='応用数学1', value='応用数学1'),
-    discord.app_commands.Choice(name='応用英語', value='応用英語'),
+    discord.app_commands.Choice(name='制御工学', value='制御工学'),
+    discord.app_commands.Choice(name='オペレーティングシステム', value='オペレーティングシステム'),
+    discord.app_commands.Choice(name='物質工学概論', value='物質工学概論'),
 ]
