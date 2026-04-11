@@ -113,7 +113,7 @@ async def delete(interaction: discord.Interaction, 課題: str):
 @tree.command(name='calendar', description='googleカレンダーのurlを送信')
 async def calendar(interaction: discord.Interaction):
     embed = discord.Embed(
-        title="📅 Googleカレンダー",
+        title="📅 課題カレンダー",
         description="[カレンダーを開く](https://calendar.google.com/calendar/u/0/embed?src=e96b3471a18e7559f5c62878fe790ad9ce4746e46c130212a2e3614e607791d3@group.calendar.google.com&ctz=Asia/Tokyo)",
         color=0x4285F4  # Googleブルー
     )
