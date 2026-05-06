@@ -5,4 +5,5 @@ subject =[
     discord.app_commands.Choice(name='工業倫理', value='工業倫理'),
     discord.app_commands.Choice(name='情報理論', value='情報理論'),
     discord.app_commands.Choice(name='レポート', value='レポート'),
+    discord.app_commands.Choice(name='物質工学', value='物質工学'),
 ]
